@@ -1,8 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import AnimalFactCard from './components/AnimalFactCard';
+
+import './styles/style.css';
+
+function App() {
+  const [animal, setAnimal] = React.useState('cat');
+
+  const genderChangeHandler = (event) => setAnimal(event.target.value);
+
+  return (
+    <>
+      <select onChange={genderChangeHandler}>
+        <option value='cat'>Cat Fact</option>
+        <option value='dog'>Dog Fact</option>
+      </select>
+      <AnimalFactCard animal={animal} />
+    </>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -10,8 +26,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
